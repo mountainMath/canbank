@@ -190,9 +190,9 @@ get_boc_series <- function(series,
 
       start <- which(r=='"OBSERVATIONS"')
       d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c")) %>%
-        mutate(date=parse_boc_date(date)) %>%
-        tidyr::pivot_longer(-date,names_to="series",values_to="value") %>%
-        mutate(value=as.numeric(value)) %>%
+        mutate(date=parse_boc_date(.data$date)) %>%
+        tidyr::pivot_longer(-.data$date,names_to="series",values_to="value") %>%
+        mutate(value=as.numeric(.data$value)) %>%
         left_join(d2,by=c("series"="id"))
       d
     }) %>%
@@ -269,9 +269,9 @@ get_boc_series_group <- function(series_group,
 
       start <- which(r=='"OBSERVATIONS"')
       d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c")) %>%
-        mutate(date=parse_boc_date(date)) %>%
-        tidyr::pivot_longer(-date,names_to="series",values_to="value") %>%
-        mutate(value=as.numeric(value)) %>%
+        mutate(date=parse_boc_date(.data$date)) %>%
+        tidyr::pivot_longer(-.data$date,names_to="series",values_to="value") %>%
+        mutate(value=as.numeric(.data$value)) %>%
         left_join(d2,by=c("series"="id"))
       d %>%
         mutate(group_name=s)

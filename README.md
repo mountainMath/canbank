@@ -7,6 +7,7 @@
 
 [![R build
 status](https://github.com/mountainMath/cansim/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/cansim/actions)
+[![R-CMD-check](https://github.com/mountainMath/canboc/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/canboc/actions)
 <!-- badges: end -->
 
 The goal of canboc is to provide convenient access to the Bank of Canada
