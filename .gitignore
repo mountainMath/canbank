@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 ^CRAN-RELEASE$
+R/hex_sticker.R

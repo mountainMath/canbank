@@ -16,11 +16,12 @@ knitr::opts_chunk$set(
 # canboc
 
 <!-- badges: start -->
-[![R build status](https://github.com/mountainMath/cansim/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/cansim/actions)
 [![R-CMD-check](https://github.com/mountainMath/canboc/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/canboc/actions)
 <!-- badges: end -->
 
-The goal of canboc is to provide convenient access to the Bank of Canada data API.
+<a href="https://mountainmath.github.io/canboc/index.html"><img src="https://raw.githubusercontent.com/mountainMath/cansim/master/logo.svg" alt="canboc logo" align="right" width = "25%" height = "25%"/></a>
+
+An R packageto provide convenient access to the Bank of Canada data API.
 
 # Documentation
 [canboc R package home page and reference guide](https://mountainmath.github.io/canboc/index.html)

@@ -7,3 +7,5 @@
 ^pkgdown
 cran-comments.md
 ^CRAN-RELEASE$
+R/hex_sticker.R
+^logo.svg
