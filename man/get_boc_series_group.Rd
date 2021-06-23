@@ -34,11 +34,12 @@ get_boc_series_group(
 }
 \value{
 a tibble with series information
-
-\donttest{
-series_group_data <- get_boc_series_group(c("FX_RATES_ANNUAL", "FSR-2017-JUNE-CHART-3"))
-}
 }
 \description{
 The data is cached for the duration of the current R session
+}
+\examples{
+\donttest{
+series_group_data <- get_boc_series_group(c("FX_RATES_ANNUAL", "FSR-2017-JUNE-CHART-3"))
+}
 }

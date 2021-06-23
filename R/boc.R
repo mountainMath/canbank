@@ -5,6 +5,7 @@
 #' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series information
 #'
+#' @examples
 #' \donttest{
 #' series <- list_boc_series()
 #' }
@@ -29,6 +30,7 @@ list_boc_series <- function(refresh=FALSE){
 #' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series information
 #'
+#' @examples
 #' \donttest{
 #' series_groups <- list_boc_series_groups()
 #' }
@@ -55,6 +57,7 @@ list_boc_series_groups <- function(refresh=FALSE){
 #' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series metadata
 #'
+#' @examples
 #' \donttest{
 #' series_info <- get_boc_series_info(c("IEXE1001.CL", "IEXE4702"))
 #' }
@@ -85,6 +88,7 @@ get_boc_series_info <- function(series,refresh=FALSE){
 #' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series metadata
 #'
+#' @examples
 #' \donttest{
 #' series_group_info <- get_boc_series_group_info(c("FX_RATES_ANNUAL", "FSR-2017-JUNE-CHART-3"))
 #' }
@@ -135,6 +139,7 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
 #'
 #' @return a tibble with series information
 #'
+#' @examples
 #' \donttest{
 #' series_data <- get_boc_series(c("IEXE1001.CL", "IEXE4702"))
 #' }
@@ -214,6 +219,7 @@ get_boc_series <- function(series,
 #'
 #' @return a tibble with series information
 #'
+#' @examples
 #' \donttest{
 #' series_group_data <- get_boc_series_group(c("FX_RATES_ANNUAL", "FSR-2017-JUNE-CHART-3"))
 #' }

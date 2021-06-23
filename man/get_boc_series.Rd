@@ -34,11 +34,12 @@ get_boc_series(
 }
 \value{
 a tibble with series information
-
-\donttest{
-series_data <- get_boc_series(c("IEXE1001.CL", "IEXE4702"))
-}
 }
 \description{
 The data is cached for the duration of the current R session
+}
+\examples{
+\donttest{
+series_data <- get_boc_series(c("IEXE1001.CL", "IEXE4702"))
+}
 }
