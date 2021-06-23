@@ -1,6 +1,6 @@
 Package: canboc
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Access Bank Of Canada Data
 Version: 0.1.0
 Authors@R: c(
     person("Jens", "von Bergmann", email = "jens@mountainmath.ca", role = c("cre"))
