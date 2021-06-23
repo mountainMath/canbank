@@ -11,6 +11,10 @@ list_boc_series_groups(refresh = FALSE)
 }
 \value{
 a tibble with series information
+
+\donttest{
+series_groups <- list_boc_series_groups()
+}
 }
 \description{
 The list of series is cached for the duration of the current R session

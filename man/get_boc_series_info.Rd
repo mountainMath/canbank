@@ -13,6 +13,10 @@ get_boc_series_info(series, refresh = FALSE)
 }
 \value{
 a tibble with series metadata
+
+\donttest{
+series_info <- get_boc_series_info(c("IEXE1001.CL", "IEXE4702"))
+}
 }
 \description{
 The result is cached for the duration of the current R session

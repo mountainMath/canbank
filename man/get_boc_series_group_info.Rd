@@ -13,6 +13,10 @@ get_boc_series_group_info(series_group, refresh = FALSE)
 }
 \value{
 a tibble with series metadata
+
+\donttest{
+series_group_info <- get_boc_series_group_info(c("FX_RATES_ANNUAL", "FSR-2017-JUNE-CHART-3"))
+}
 }
 \description{
 The result is cached for the duration of the current R session
