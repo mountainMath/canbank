@@ -1,0 +1,40 @@
+pandoc: 2.3.1
+pkgdown_sha: ~
+
+url: https://mountainmath.github.io/canboc/index.html
+
+home:
+  title: Retrieve and work with public Bank of Canada Canada data tables in R
+
+reference:
+  - title: Retrieving data
+    desc: Retrieve data series and series groups from the Bank of Canada
+  - contents:
+    - get_boc_series
+    - get_boc_series_group
+  - title: Locating data
+  - contents:
+    - list_boc_series
+    - list_boc_series_groups
+  - title: Metadata and information
+  - contents:
+    - get_boc_series_info
+    - get_boc_series_group_info
+
+news:
+
+authors:
+  Jens von Bergmann:
+    href: https://mountainmath.ca
+template:
+  #params:
+  #  ganalytics: UA-107390160-2
+  opengraph:
+    image:
+      src: 'https://mountainmath.github.io/canboc/logo.png'
+      alt: "canboc"
+    twitter:
+      creator: "@vb_jens"
+      card: summary_large_image
+      site: "https://mountainmath.github.io/canboc/"
+

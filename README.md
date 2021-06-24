@@ -8,9 +8,10 @@
 [![R-CMD-check](https://github.com/mountainMath/canboc/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/canboc/actions)
 <!-- badges: end -->
 
-<a href="https://mountainmath.github.io/canboc/index.html"><img src="https://github.com/mountainMath/canboc/raw/main/logo.svg" alt="canboc logo" align="right" width = "25%" height = "25%"/></a>
+<a href="https://mountainmath.github.io/canboc/index.html"><img src="https://mountainmath.github.io/canboc/logo.svg" alt="canboc logo" align="right" width = "25%" height = "25%"/></a>
 
-An R packageto provide convenient access to the Bank of Canada data API.
+An R package to provide convenient access to the Bank of Canada data
+API.
 
 # Documentation
 
