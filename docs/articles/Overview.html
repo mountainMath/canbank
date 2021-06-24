@@ -289,7 +289,58 @@
        x<span class="op">=</span><span class="cn">NULL</span>,y<span class="op">=</span><span class="cn">NULL</span>,
        caption<span class="op">=</span><span class="st">"Source: Bank of Canada series group FSHUB_20210317_C2"</span><span class="op">)</span>
 <span class="co">#&gt; Downloading BOC series data for FSHUB_20210317_C2</span></code></pre></div>
-<p><img src="Overview_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="Overview_files/figure-html/mls-1.png" width="700"></p>
+<p>Or we might be interested in 5-year mortgage rates.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mortgate_rate_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_boc_series.html">list_boc_series</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"mortgage rate"</span>,<span class="va">label</span><span class="op">)</span><span class="op">)</span> 
+<span class="co">#&gt; Accessing BOC series list from cache...</span>
+
+<span class="va">mortgate_rate_series</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">link</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="21%">
+<col width="25%">
+<col width="52%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="left">label</th>
+<th align="left">description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">BROKER_AVERAGE_5YR_VRM</td>
+<td align="left">Estimated variable mortgage rate</td>
+<td align="left">Estimated variable mortgage rate</td>
+</tr>
+<tr class="even">
+<td align="left">WM_SAN_BILO20181003_C1_S4</td>
+<td align="left">5-year mortgage rate (left scale)</td>
+<td align="left">Share of new mortgages with a loan-to-income ratio over 450 per cent</td>
+</tr>
+<tr class="odd">
+<td align="left">WM_SAN_FEUN20181109_C1_5Y-MR</td>
+<td align="left">5-year mortgage rate</td>
+<td align="left">5-year mortgage rate</td>
+</tr>
+</tbody>
+</table>
+<p>Taking a closer look at the 5-year fixed and estimated variable rates.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_boc_series.html">get_boc_series</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"BROKER_AVERAGE_5YR_VRM"</span>,<span class="st">"WM_SAN_FEUN20181109_C1_5Y-MR"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">date</span>,y<span class="op">=</span><span class="va">value</span><span class="op">/</span><span class="fl">100</span>,colour<span class="op">=</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Mortgage rates"</span>,
+       x<span class="op">=</span><span class="cn">NULL</span>,y<span class="op">=</span><span class="cn">NULL</span>, colour<span class="op">=</span><span class="cn">NULL</span>,
+       caption<span class="op">=</span><span class="st">"Source: Bank of Canada series BROKER_AVERAGE_5YR_VRM, WM_SAN_FEUN20181109_C1_5Y-MR"</span><span class="op">)</span>
+<span class="co">#&gt; Downloading BOC series data for BROKER_AVERAGE_5YR_VRM</span>
+<span class="co">#&gt; Downloading BOC series data for WM_SAN_FEUN20181109_C1_5Y-MR</span></code></pre></div>
+<p><img src="Overview_files/figure-html/mortage-rates-1.png" width="700"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

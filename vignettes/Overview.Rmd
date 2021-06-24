@@ -43,7 +43,7 @@ series_list %>%
 
 If we are intersted in MLS home price index, we might want to inspect the series group FSHUB_20210317_C2.
 
-```{r}
+```{r mls}
 get_boc_series_group("FSHUB_20210317_C2") %>%
   mutate(name=gsub(" \\(.+\\)$","",label)) %>%
   ggplot(aes(x=date,y=value)) +
@@ -55,8 +55,29 @@ get_boc_series_group("FSHUB_20210317_C2") %>%
        caption="Source: Bank of Canada series group FSHUB_20210317_C2")
 ```
 
+Or we might be interested in 5-year mortgage rates.
 
+```{r}
+mortgate_rate_series <- list_boc_series() %>% 
+  filter(grepl("mortgage rate",label)) 
 
+mortgate_rate_series %>%
+  select(-link) %>%
+  knitr::kable()
+```
+
+Taking a closer look at the 5-year fixed and estimated variable rates.
+
+```{r mortage-rates}
+get_boc_series(c("BROKER_AVERAGE_5YR_VRM","WM_SAN_FEUN20181109_C1_5Y-MR")) %>%
+  ggplot(aes(x=date,y=value/100,colour=label)) +
+  geom_line() +
+  scale_y_continuous(labels=scales::percent) +
+  theme(legend.position = "bottom") +
+  labs(title="Mortgage rates",
+       x=NULL,y=NULL, colour=NULL,
+       caption="Source: Bank of Canada series BROKER_AVERAGE_5YR_VRM, WM_SAN_FEUN20181109_C1_5Y-MR")
+```
 
 
 
