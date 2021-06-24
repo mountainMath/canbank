@@ -194,9 +194,11 @@ get_boc_series <- function(series,
                           col_types = readr::cols(.default="c"))
 
       start <- which(r=='"OBSERVATIONS"')
-      d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c")) %>%
-        mutate(date=parse_boc_date(.data$date)) %>%
-        tidyr::pivot_longer(-.data$date,names_to="series",values_to="value") %>%
+      d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c"))
+
+      if ("date" %in% names(d)) d <- d %>% mutate(date=parse_boc_date(.data$date))
+      d <- d %>%
+        tidyr::pivot_longer(s,names_to="series",values_to="value") %>%
         mutate(value=as.numeric(.data$value)) %>%
         left_join(d2,by=c("series"="id"))
       d
