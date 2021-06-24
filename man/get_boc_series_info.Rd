@@ -9,7 +9,7 @@ get_boc_series_info(series, refresh = FALSE)
 \arguments{
 \item{series}{A vector of series identifiers}
 
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
 a tibble with series metadata

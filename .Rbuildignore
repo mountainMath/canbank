@@ -11,3 +11,5 @@ R/hex_sticker.R
 ^logo.svg
 ^logo.png
 ^images
+^doc$
+^Meta$

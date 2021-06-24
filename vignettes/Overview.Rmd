@@ -1,0 +1,63 @@
+---
+title: "Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dplyr)
+library(ggplot2)
+library(canbank)
+```
+
+The package gives access ot the Bank of Canada data API. Currently there are `r scales::comma(nrow(list_boc_series()))` data series available, grouped into `r scales::comma(nrow(list_boc_series_groups()))`. We obtain basic information for the series or series groups.
+
+```{r}
+series_list <- list_boc_series()
+series_group_list <- list_boc_series_groups()
+
+head(series_list) %>% knitr::kable()
+```
+
+
+
+Data discovery is still somewhat cumbersome, we can search for phrases in the labels or description.
+
+```{r}
+series_list %>%
+  filter(grepl("home",label,ignore.case = TRUE)) %>% 
+  select(-link) %>%
+  knitr::kable()
+```
+
+
+If we are intersted in MLS home price index, we might want to inspect the series group FSHUB_20210317_C2.
+
+```{r}
+get_boc_series_group("FSHUB_20210317_C2") %>%
+  mutate(name=gsub(" \\(.+\\)$","",label)) %>%
+  ggplot(aes(x=date,y=value)) +
+  geom_line(colour="steelblue",size=1) +
+  geom_smooth(se=FALSE,method="lm",formula=y~1,colour="brown",size=0.5) +
+  facet_wrap(~name,scales="free_y",ncol=1) +
+  labs(title="MLS overview data for Canada with long-run averages",
+       x=NULL,y=NULL,
+       caption="Source: Bank of Canada series group FSHUB_20210317_C2")
+```
+
+
+
+
+
+
+

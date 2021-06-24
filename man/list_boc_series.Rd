@@ -7,7 +7,7 @@
 list_boc_series(refresh = FALSE)
 }
 \arguments{
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
 a tibble with series information

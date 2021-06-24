@@ -30,10 +30,10 @@ get_boc_series(
 
 \item{recent_years}{(Optional) Only retrieve data for most recent \code{recent_years} years}
 
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
-a tibble with series information
+a tibble with series data
 }
 \description{
 The data is cached for the duration of the current R session

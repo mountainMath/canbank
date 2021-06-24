@@ -30,7 +30,7 @@ get_boc_series_group(
 
 \item{recent_years}{(Optional) Only retrieve data for most recent \code{recent_years} years}
 
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
 a tibble with series information

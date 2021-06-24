@@ -4,3 +4,6 @@
 .Ruserdata
 ^CRAN-RELEASE$
 R/hex_sticker.R
+inst/doc
+/doc/
+/Meta/

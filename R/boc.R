@@ -2,7 +2,7 @@
 #' List available BOC time series
 #'
 #' The list of series is cached for the duration of the current R session
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series information
 #'
 #' @examples
@@ -26,9 +26,9 @@ list_boc_series <- function(refresh=FALSE){
 
 #' List available BOC time series groups
 #'
-#' The list of series is cached for the duration of the current R session
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
-#' @return a tibble with series information
+#' The list of series groups is cached for the duration of the current R session
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
+#' @return a tibble with series group information
 #'
 #' @examples
 #' \donttest{
@@ -54,7 +54,7 @@ list_boc_series_groups <- function(refresh=FALSE){
 #'
 #' The result is cached for the duration of the current R session
 #' @param series A vector of series identifiers
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series metadata
 #'
 #' @examples
@@ -85,7 +85,7 @@ get_boc_series_info <- function(series,refresh=FALSE){
 #'
 #' The result is cached for the duration of the current R session
 #' @param series_group A vector of series group identifiers
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #' @return a tibble with series metadata
 #'
 #' @examples
@@ -135,9 +135,9 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
 #' @param recent_weeks (Optional) Only retrieve data for most recent \code{recent_weeks} weeks
 #' @param recent_months (Optional) Only retrieve data for most recent \code{recent_months} months
 #' @param recent_years (Optional) Only retrieve data for most recent \code{recent_years} years
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #'
-#' @return a tibble with series information
+#' @return a tibble with series data
 #'
 #' @examples
 #' \donttest{
@@ -217,7 +217,7 @@ get_boc_series <- function(series,
 #' @param recent_weeks (Optional) Only retrieve data for most recent \code{recent_weeks} weeks
 #' @param recent_months (Optional) Only retrieve data for most recent \code{recent_months} months
 #' @param recent_years (Optional) Only retrieve data for most recent \code{recent_years} years
-#' @param refresh (Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}
+#' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #'
 #' @return a tibble with series information
 #'

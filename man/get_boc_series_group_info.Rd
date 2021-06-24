@@ -9,7 +9,7 @@ get_boc_series_group_info(series_group, refresh = FALSE)
 \arguments{
 \item{series_group}{A vector of series group identifiers}
 
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
 a tibble with series metadata

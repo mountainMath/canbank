@@ -21,6 +21,13 @@ reference:
     - get_boc_series_info
     - get_boc_series_group_info
 
+articles:
+  - title: "Working with the canbank package"
+    navbar: ~
+    contents:
+      - Overview
+
+
 news:
 
 authors:

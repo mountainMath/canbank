@@ -7,13 +7,13 @@
 list_boc_series_groups(refresh = FALSE)
 }
 \arguments{
-\item{refresh}{(Optional) Refresh currenly cached series if \code{TRUE}, default is \code{FALSE}}
+\item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
 \value{
-a tibble with series information
+a tibble with series group information
 }
 \description{
-The list of series is cached for the duration of the current R session
+The list of series groups is cached for the duration of the current R session
 }
 \examples{
 \donttest{
