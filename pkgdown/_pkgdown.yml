@@ -31,7 +31,7 @@ template:
   #  ganalytics: UA-107390160-2
   opengraph:
     image:
-      src: 'https://mountainmath.github.io/canboc/logo.png'
+      src: 'https://github.com/mountainMath/canboc/raw/main/logo.png'
       alt: "canboc"
     twitter:
       creator: "@vb_jens"
