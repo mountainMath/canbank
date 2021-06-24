@@ -1,30 +1,30 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# canboc
+# canbank
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/mountainMath/canboc/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/canboc/actions)
+[![R-CMD-check](https://github.com/mountainMath/canbank/workflows/R-CMD-check/badge.svg)](https://github.com/mountainMath/canbank/actions)
 <!-- badges: end -->
 
-<a href="https://mountainmath.github.io/canboc/index.html"><img src="https://mountainmath.github.io/canboc/logo.svg" alt="canboc logo" align="right" width = "25%" height = "25%"/></a>
+<a href="https://mountainmath.github.io/canbank/index.html"><img src="https://mountainmath.github.io/canbank/logo.svg" alt="canbank logo" align="right" width = "25%" height = "25%"/></a>
 
 An R package to provide convenient access to the Bank of Canada data
 API.
 
 # Documentation
 
-[canboc R package home page and reference
-guide](https://mountainmath.github.io/canboc/index.html)
+[canbank R package home page and reference
+guide](https://mountainmath.github.io/canbank/index.html)
 
 ## Installation
 
-You can install the released version of canboc from
+You can install the released version of canbank from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-remotes::install_github("mountainmath/canboc")
+remotes::install_github("mountainmath/canbank")
 ```
 
 ## Example
@@ -36,7 +36,7 @@ Canada we can easily retrieve the data using the `get_boc_series_group`
 method.
 
 ``` r
-library(canboc)
+library(canbank)
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'

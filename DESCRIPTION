@@ -1,4 +1,4 @@
-Package: canboc
+Package: canbank
 Type: Package
 Title: Access Bank Of Canada Data
 Version: 0.1.0
@@ -22,7 +22,7 @@ Suggests: knitr,
     rmarkdown,
     scales, 
     ggplot2
-URL: https://github.com/mountainMath/canboc, https://mountainmath.github.io/canboc/, https://www.bankofcanada.ca/valet/docs/
-BugReports: https://github.com/mountainMath/canboc/issues
+URL: https://github.com/mountainMath/canbank, https://mountainmath.github.io/canbank/, https://www.bankofcanada.ca/valet/docs/
+BugReports: https://github.com/mountainMath/canbank/issues
 VignetteBuilder: knitr
 Language: en-CA
