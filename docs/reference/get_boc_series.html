@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">canbank</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -149,6 +149,7 @@
   recent_weeks <span class='op'>=</span> <span class='cn'>NULL</span>,
   recent_months <span class='op'>=</span> <span class='cn'>NULL</span>,
   recent_years <span class='op'>=</span> <span class='cn'>NULL</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>,
   refresh <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
@@ -182,6 +183,10 @@
     <tr>
       <th>recent_years</th>
       <td><p>(Optional) Only retrieve data for most recent <code>recent_years</code> years</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>(Optional) Don't emit messages or warnings if <code>TRUE</code>, default is <code>FALSE</code></p></td>
     </tr>
     <tr>
       <th>refresh</th>

@@ -98,10 +98,10 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
     lapply(function(s){
       tmp <- file.path(cache_dir(),paste0("series_group_info_",s))
       if (refresh || !file.exists(tmp)) {
-        message(paste0("Downloading BOC series data for ",s))
+        message(paste0("Downloading BOC series group data for ",s))
         utils::download.file(paste0(BOC_BASE_PATH,paste0("/groups/",s,"/csv")),tmp, quiet=TRUE)
       } else {
-        message("Accessing BOC series list from cache...")
+        message("Accessing BOC series group list from cache...")
       }
 
       r<-readr::read_lines(tmp)
@@ -135,6 +135,7 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
 #' @param recent_weeks (Optional) Only retrieve data for most recent \code{recent_weeks} weeks
 #' @param recent_months (Optional) Only retrieve data for most recent \code{recent_months} months
 #' @param recent_years (Optional) Only retrieve data for most recent \code{recent_years} years
+#' @param quiet (Optional) Don't emit messages or warnings if \code{TRUE}, default is \code{FALSE}
 #' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #'
 #' @return a tibble with series data
@@ -147,12 +148,13 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
 get_boc_series <- function(series,
                            start_date=NULL,end_date=NULL,
                            recent=NULL,recent_weeks=NULL,recent_months=NULL,recent_years=NULL,
+                           quiet=FALSE,
                            refresh=FALSE){
 
   query = c()
   if (!is.null(start_date)||!is.null(end_date)) {
     if (!is.null(recent)||!is.null(recent_weeks)||!is.null(recent_months)||!is.null(recent_years))
-      warning("Can't specify recent time frame if also specifying start or end dates, ignoring rencent time frame specifications.")
+      if (!quiet) warning("Can't specify recent time frame if also specifying start or end dates, ignoring rencent time frame specifications.")
     if (!is.null(start_date)) query <- c(query,start_date=as.character(start_date))
     if (!is.null(end_date)) query <- c(query,end_date=as.character(end_date))
   } else {
@@ -161,7 +163,7 @@ get_boc_series <- function(series,
     if (!is.null(recent_months)) query <- c(query,recent_months=as.character(recent_months))
     if (!is.null(recent_years)) query <- c(query,recent_years=as.character(recent_years))
     if (length(query)>1) {
-      warning(paste0("Can only specify one recent time frame, using ",names(query)[1]))
+      if (!quiet) warning(paste0("Can only specify one recent time frame, using ",names(query)[1]))
       query<-query[1]
     }
   }
@@ -171,7 +173,7 @@ get_boc_series <- function(series,
       hash <- digest::digest(c("series_data",query))
       tmp <- file.path(cache_dir(),paste0("series_data_",s,"_",hash))
       if (refresh || !file.exists(tmp)) {
-        message(paste0("Downloading BOC series data for ",s))
+        if (!quiet) message(paste0("Downloading BOC series data for ",s))
         url <- paste0("/observations/",s,"/csv")
 
         if (length(query)>0) {
@@ -182,7 +184,7 @@ get_boc_series <- function(series,
         }
         utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE)
       } else {
-        message("Accessing BOC series list from cache...")
+        if (!quiet) message("Accessing BOC series data from cache...")
       }
       r<-readr::read_lines(tmp)
       start <- which(r=='"SERIES"')
@@ -196,10 +198,11 @@ get_boc_series <- function(series,
       start <- which(r=='"OBSERVATIONS"')
       d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c"))
 
-      if ("date" %in% names(d)) d <- d %>% mutate(date=parse_boc_date(.data$date))
+      if ("date" %in% names(d)) d <- d %>% mutate(Date=parse_boc_date(.data$date))
+      else d <- d %>% mutate(Date=as.Date(NA))
       d <- d %>%
         tidyr::pivot_longer(s,names_to="series",values_to="value") %>%
-        mutate(value=as.numeric(.data$value)) %>%
+        mutate(Value=as.numeric(.data$value)) %>%
         left_join(d2,by=c("series"="id"))
       d
     }) %>%
@@ -217,6 +220,7 @@ get_boc_series <- function(series,
 #' @param recent_weeks (Optional) Only retrieve data for most recent \code{recent_weeks} weeks
 #' @param recent_months (Optional) Only retrieve data for most recent \code{recent_months} months
 #' @param recent_years (Optional) Only retrieve data for most recent \code{recent_years} years
+#' @param quiet (Optional) Don't emit messages or warnings if \code{TRUE}, default is \code{FALSE}
 #' @param refresh (Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}
 #'
 #' @return a tibble with series information
@@ -229,12 +233,13 @@ get_boc_series <- function(series,
 get_boc_series_group <- function(series_group,
                            start_date=NULL,end_date=NULL,
                            recent=NULL,recent_weeks=NULL,recent_months=NULL,recent_years=NULL,
+                           quiet = FALSE,
                            refresh=FALSE){
 
   query = c()
   if (!is.null(start_date)||!is.null(end_date)) {
     if (!is.null(recent)||!is.null(recent_weeks)||!is.null(recent_months)||!is.null(recent_years))
-      warning("Can't specify recent time frame if also specifying start or end dates, ignoring rencent time frame specifications.")
+      if (!quiet) warning("Can't specify recent time frame if also specifying start or end dates, ignoring rencent time frame specifications.")
     if (!is.null(start_date)) query <- c(query,start_date=as.character(start_date))
     if (!is.null(end_date)) query <- c(query,end_date=as.character(end_date))
   } else {
@@ -243,7 +248,7 @@ get_boc_series_group <- function(series_group,
     if (!is.null(recent_months)) query <- c(query,recent_months=as.character(recent_months))
     if (!is.null(recent_years)) query <- c(query,recent_years=as.character(recent_years))
     if (length(query)>1) {
-      warning(paste0("Can only specify one recent time frame, using ",names(query)[1]))
+      if (!quiet) warning(paste0("Can only specify one recent time frame, using ",names(query)[1]))
       query<-query[1]
     }
   }
@@ -252,8 +257,9 @@ get_boc_series_group <- function(series_group,
     lapply(function(s){
       hash <- digest::digest(c("series_group_data",query))
       tmp <- file.path(cache_dir(),paste0("series_data_",s,"_",hash))
+      error <- NULL
       if (refresh || !file.exists(tmp)) {
-        message(paste0("Downloading BOC series data for ",s))
+        if (!quiet) message(paste0("Downloading BOC series group data for ",s))
         url <- paste0("/observations/group/",s,"/csv")
 
         if (length(query)>0) {
@@ -262,28 +268,40 @@ get_boc_series_group <- function(series_group,
             paste0(collapse="&")
           url <- paste0(url,"?",query_string)
         }
-        utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE)
-      } else {
-        message("Accessing BOC series list from cache...")
-      }
-      r<-readr::read_lines(tmp)
-      start <- which(r=='"SERIES"')
-      blank <- which(r=="")
-      stop <- which(r=='"OBSERVATIONS"') -1
-      #if (length(blank>1)) stop <- pmin(stop,blank[2])
-      d2<-readr::read_csv(tmp,skip=start,
-                          n_max = stop-start-2,
-                          col_types = readr::cols(.default="c"))
+        tryCatch(utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE),
+                 error=function(cond){
+                   error <<- cond
+                 })
 
-      start <- which(r=='"OBSERVATIONS"')
-      d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c")) %>%
-        mutate(date=parse_boc_date(.data$date)) %>%
-        tidyr::pivot_longer(-.data$date,names_to="series",values_to="value") %>%
-        mutate(value=as.numeric(.data$value)) %>%
-        left_join(d2,by=c("series"="id"))
-      d %>%
-        mutate(group_name=s)
-    }) %>%
+      } else {
+        if (!quiet) message("Accessing BOC series group data from cache...")
+      }
+      if (!is.null(error)) {
+        warning("Could not parse data for series group ",s)
+        d <- tibble(group_name=s)
+      } else {
+        r<-readr::read_lines(tmp)
+        start <- which(r=='"SERIES"')
+        blank <- which(r=="")
+        stop <- which(r=='"OBSERVATIONS"') -1
+        #if (length(blank>1)) stop <- pmin(stop,blank[2])
+        d2<-readr::read_csv(tmp,skip=start,
+                            n_max = stop-start-2,
+                            col_types = readr::cols(.default="c"))
+
+        start <- which(r=='"OBSERVATIONS"')
+        d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c"))
+        if ("date" %in% names(d)) d <- d %>% mutate(Date=parse_boc_date(.data$date))
+        else d <- d %>% mutate(Date=as.Date(NA))
+        pivot_columns <- setdiff(names(d)[-1],c("Date"))
+        d <- d %>%
+          tidyr::pivot_longer(pivot_columns,names_to="series",values_to="value") %>%
+          mutate(Value=as.numeric(.data$value)) %>%
+          left_join(d2,by=c("series"="id")) %>%
+          mutate(group_name=s)
+      }
+      d
+      }) %>%
     bind_rows()
 }
 

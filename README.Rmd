@@ -47,9 +47,9 @@ library(ggplot2)
 
 data <- get_boc_series_group("SAN_MIKA20210428_C1") %>%
   mutate(name=gsub(" \\(.+$","",label)) %>%
-  filter(!is.na(value))
+  filter(!is.na(Value))
 
-ggplot(data,aes(x=date,y=value)) +
+ggplot(data,aes(x=Date,y=Value)) +
   geom_line() +
   facet_wrap(~name, scales="free") +
   labs(title="House price metrics",

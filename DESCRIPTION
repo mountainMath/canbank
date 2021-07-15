@@ -1,7 +1,7 @@
 Package: canbank
 Type: Package
 Title: Access Bank Of Canada Data
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(
     person("Jens", "von Bergmann", email = "jens@mountainmath.ca", role = c("cre"))
     )

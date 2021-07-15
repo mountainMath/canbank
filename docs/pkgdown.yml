@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Overview: Overview.html
-last_built: 2021-06-24T20:11Z
+last_built: 2021-07-15T16:02Z
 urls:
   reference: https://mountainmath.github.io/canboc/index.html/reference
   article: https://mountainmath.github.io/canboc/index.html/articles

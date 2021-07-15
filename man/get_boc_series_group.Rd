@@ -12,6 +12,7 @@ get_boc_series_group(
   recent_weeks = NULL,
   recent_months = NULL,
   recent_years = NULL,
+  quiet = FALSE,
   refresh = FALSE
 )
 }
@@ -29,6 +30,8 @@ get_boc_series_group(
 \item{recent_months}{(Optional) Only retrieve data for most recent \code{recent_months} months}
 
 \item{recent_years}{(Optional) Only retrieve data for most recent \code{recent_years} years}
+
+\item{quiet}{(Optional) Don't emit messages or warnings if \code{TRUE}, default is \code{FALSE}}
 
 \item{refresh}{(Optional) Refresh currently cached series if \code{TRUE}, default is \code{FALSE}}
 }
