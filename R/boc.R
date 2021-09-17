@@ -196,10 +196,12 @@ get_boc_series <- function(series,
                           col_types = readr::cols(.default="c"))
 
       start <- which(r=='"OBSERVATIONS"')
-      d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c"))
+      max_line <- which(r=='"REVISIONS"')
+      if (length(max_line)==0) max_line <- Inf
+      d<-readr::read_csv(tmp,skip=start,n_max=max_line-start-3,
+                         col_types = readr::cols(.default="c")) %>%
+        clean_boc_data_dates()
 
-      if ("date" %in% names(d)) d <- d %>% mutate(Date=parse_boc_date(.data$date))
-      else d <- d %>% mutate(Date=as.Date(NA))
       d <- d %>%
         tidyr::pivot_longer(s,names_to="series",values_to="value") %>%
         mutate(Value=as.numeric(.data$value)) %>%
@@ -290,9 +292,12 @@ get_boc_series_group <- function(series_group,
                             col_types = readr::cols(.default="c"))
 
         start <- which(r=='"OBSERVATIONS"')
-        d<-readr::read_csv(tmp,skip=start,col_types = readr::cols(.default="c"))
-        if ("date" %in% names(d)) d <- d %>% mutate(Date=parse_boc_date(.data$date))
-        else d <- d %>% mutate(Date=as.Date(NA))
+        max_line <- which(r=='"REVISIONS"')
+        if (length(max_line)==0) max_line <- Inf
+        d<-readr::read_csv(tmp,skip=start,n_max=max_line-start-3,
+                           col_types = readr::cols(.default="c")) %>%
+          clean_boc_data_dates()
+
         pivot_columns <- setdiff(names(d)[-1],c("Date"))
         d <- d %>%
           tidyr::pivot_longer(pivot_columns,names_to="series",values_to="value") %>%

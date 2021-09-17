@@ -13,3 +13,4 @@ R/hex_sticker.R
 ^images
 ^doc$
 ^Meta$
+R/boc_json.R

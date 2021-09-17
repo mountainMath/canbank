@@ -39,3 +39,14 @@ get_boc_all_series_last_date <- function(quiet=TRUE){
   }
   d
 }
+
+
+clean_boc_data_dates <- function(d){
+  revisions <- which(d[,1]=="REVISIONS")
+  if (length(revisions)>0) {d <- d %>% slice(1:revisions[1]-1)}
+
+  if ("date" %in% names(d)) d <- d %>% mutate(Date=parse_boc_date(.data$date))
+  else d <- d %>% mutate(Date=as.Date(NA))
+
+  d
+}
