@@ -1,7 +1,7 @@
 pandoc: 2.3.1
 pkgdown_sha: ~
 
-url: https://mountainmath.github.io/canboc/index.html
+url: https://mountainmath.github.io/canbank/index.html
 
 home:
   title: Retrieve and work with public Bank of Canada Canada data tables in R
@@ -38,10 +38,10 @@ template:
   #  ganalytics: UA-107390160-2
   opengraph:
     image:
-      src: 'https://github.com/mountainMath/canboc/raw/main/logo.png'
-      alt: "canboc"
+      src: 'https://github.com/mountainMath/canbank/raw/main/logo.png'
+      alt: "canbank"
     twitter:
       creator: "@vb_jens"
       card: summary_large_image
-      site: "https://mountainmath.github.io/canboc/"
+      site: "https://mountainmath.github.io/canbank/"
 
