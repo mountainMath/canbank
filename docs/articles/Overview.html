@@ -54,7 +54,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -108,7 +108,9 @@
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mountainMath/canbank" class="external-link">canbank</a></span><span class="op">)</span></code></pre></div>
-<p>The package gives access ot the Bank of Canada data API. Currently there are 8,574 data series available, grouped into 851. We obtain basic information for the series or series groups.</p>
+<p>The package gives access ot the Bank of Canada data API. Currently
+there are 9,241 data series available, grouped into 1,009. We obtain
+basic information for the series or series groups.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">series_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_boc_series.html">list_boc_series</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Accessing BOC series list from cache...</span>
@@ -168,7 +170,8 @@
 </tr>
 </tbody>
 </table>
-<p>Data discovery is still somewhat cumbersome, we can search for phrases in the labels or description.</p>
+<p>Data discovery is still somewhat cumbersome, we can search for
+phrases in the labels or description.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">series_list</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"home"</span>,<span class="va">label</span>,ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -189,41 +192,60 @@
 <tr class="odd">
 <td align="left">V37756</td>
 <td align="left">Mobile homes</td>
-<td align="left">Canadian dollar loans - Loans to Canadian individuals for non-business purposes - To purchase consumer goods and other personal services</td>
+<td align="left">Canadian dollar loans - Loans to Canadian individuals
+for non-business purposes - To purchase consumer goods and other
+personal services</td>
 </tr>
 <tr class="even">
 <td align="left">FSR_2018JUNE_C3S1</td>
-<td align="left">Residential mortgage credit and home equity lines of credit; 3-month seasonally adjusted annualized rate</td>
-<td align="left">June 2018 FSR; Chart 3; Residential mortgage credit and home equity lines of credit; 3-month seasonally adjusted annualized rate</td>
+<td align="left">Residential mortgage credit and home equity lines of
+credit; 3-month seasonally adjusted annualized rate</td>
+<td align="left">June 2018 FSR; Chart 3; Residential mortgage credit and
+home equity lines of credit; 3-month seasonally adjusted annualized
+rate</td>
 </tr>
 <tr class="odd">
 <td align="left">FSR_2018JUNE_C3S2</td>
-<td align="left">Consumer credit, excluding home equity lines of credit; 3-month seasonally adjusted annualized rate</td>
-<td align="left">June 2018 FSR; Chart 3; Consumer credit, excluding home equity lines of credit; 3-month seasonally adjusted annualized rate</td>
+<td align="left">Consumer credit, excluding home equity lines of credit;
+3-month seasonally adjusted annualized rate</td>
+<td align="left">June 2018 FSR; Chart 3; Consumer credit, excluding home
+equity lines of credit; 3-month seasonally adjusted annualized rate</td>
 </tr>
 <tr class="even">
 <td align="left">FSR_2018JUNE_C7S1</td>
-<td align="left">Year-over-year growth in national quality-adjusted benchmark prices; Single-family homes</td>
-<td align="left">June 2018 FSR; Chart 7; Year-over-year growth in national quality-adjusted benchmark prices; Single-family homes</td>
+<td align="left">Year-over-year growth in national quality-adjusted
+benchmark prices; Single-family homes</td>
+<td align="left">June 2018 FSR; Chart 7; Year-over-year growth in
+national quality-adjusted benchmark prices; Single-family homes</td>
 </tr>
 <tr class="odd">
 <td align="left">FSR_2018JUNE_C8AS1</td>
-<td align="left">3-month seasonally adjusted annualized growth in quality-adjusted benchmark prices in the Greater Toronto Area; Single-family homes</td>
-<td align="left">June 2018 FSR; Chart 8a; 3-month seasonally adjusted annualized growth in quality-adjusted benchmark prices in the Greater Toronto Area; Single-family homes</td>
+<td align="left">3-month seasonally adjusted annualized growth in
+quality-adjusted benchmark prices in the Greater Toronto Area;
+Single-family homes</td>
+<td align="left">June 2018 FSR; Chart 8a; 3-month seasonally adjusted
+annualized growth in quality-adjusted benchmark prices in the Greater
+Toronto Area; Single-family homes</td>
 </tr>
 <tr class="even">
 <td align="left">FSR_2018JUNE_C8BS1</td>
-<td align="left">3-month seasonally adjusted annualized growth in quality-adjusted benchmark prices in the Greater Vancouver Area; Single-family homes</td>
-<td align="left">June 2018 FSR; Chart 8b; 3-month seasonally adjusted annualized growth in quality-adjusted benchmark prices in the Greater Vancouver Area; Single-family homes</td>
+<td align="left">3-month seasonally adjusted annualized growth in
+quality-adjusted benchmark prices in the Greater Vancouver Area;
+Single-family homes</td>
+<td align="left">June 2018 FSR; Chart 8b; 3-month seasonally adjusted
+annualized growth in quality-adjusted benchmark prices in the Greater
+Vancouver Area; Single-family homes</td>
 </tr>
 <tr class="odd">
 <td align="left">FSR_2019_C3_S00</td>
-<td align="left">Residential mortgage credit and home equity lines of credit</td>
+<td align="left">Residential mortgage credit and home equity lines of
+credit</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">FSR_2019_C3_S01</td>
-<td align="left">Consumer credit, excluding home equity lines of credit</td>
+<td align="left">Consumer credit, excluding home equity lines of
+credit</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -243,7 +265,8 @@
 </tr>
 <tr class="even">
 <td align="left">FSHUB_20210317_C2_S2</td>
-<td align="left">Multiple Listing Service Home Price Index for Canada, year-over-year percentage change (right scale)</td>
+<td align="left">Multiple Listing Service Home Price Index for Canada,
+year-over-year percentage change (right scale)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -253,7 +276,8 @@
 </tr>
 <tr class="even">
 <td align="left">FSHUB_20210317_C8_S1</td>
-<td align="left">Consumer credit, including home equity lines of credit</td>
+<td align="left">Consumer credit, including home equity lines of
+credit</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -263,7 +287,8 @@
 </tr>
 <tr class="even">
 <td align="left">FSR_2021_C3_S1</td>
-<td align="left">Consumer debt, including home equity lines of credit</td>
+<td align="left">Consumer debt, including home equity lines of
+credit</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -276,9 +301,85 @@
 <td align="left">Homeowners</td>
 <td align="left">NA</td>
 </tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C3_S1</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C3_S2</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C4_S1</td>
+<td align="left">First-time homebuyers (left scale)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C4_S2</td>
+<td align="left">Repeat homebuyers (right scale)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C6A_S2</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C6A_S3</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C6B_S2</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C6B_S3</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C6C_S2</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C6C_S3</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C6D_S2</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C6D_S3</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SAN_MIKA20211206_C6E_S2</td>
+<td align="left">First-time homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">SAN_MIKA20211206_C6E_S3</td>
+<td align="left">Repeat homebuyers</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">FSR_2022_C2A_S1</td>
+<td align="left">Share of mortgaged home purchases by investors</td>
+<td align="left">NA</td>
+</tr>
 </tbody>
 </table>
-<p>If we are intersted in MLS home price index, we might want to inspect the series group FSHUB_20210317_C2.</p>
+<p>If we are intersted in MLS home price index, we might want to inspect
+the series group FSHUB_20210317_C2.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_boc_series_group.html">get_boc_series_group</a></span><span class="op">(</span><span class="st">"FSHUB_20210317_C2"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>name<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">" \\(.+\\)$"</span>,<span class="st">""</span>,<span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -320,21 +421,33 @@
 <tr class="even">
 <td align="left">WM_SAN_BILO20181003_C1_S4</td>
 <td align="left">5-year mortgage rate (left scale)</td>
-<td align="left">Share of new mortgages with a loan-to-income ratio over 450 per cent</td>
+<td align="left">Share of new mortgages with a loan-to-income ratio over
+450 per cent</td>
 </tr>
 <tr class="odd">
 <td align="left">WM_SAN_FEUN20181109_C1_5Y-MR</td>
 <td align="left">5-year mortgage rate</td>
 <td align="left">5-year mortgage rate</td>
 </tr>
+<tr class="even">
+<td align="left">FSR_2022_C1A_S1</td>
+<td align="left">5-year fixed mortgage rate</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">FSR_2022_C1A_S2</td>
+<td align="left">5-year variable mortgage rate</td>
+<td align="left">NA</td>
+</tr>
 </tbody>
 </table>
-<p>Taking a closer look at the 5-year fixed and estimated variable rates.</p>
+<p>Taking a closer look at the 5-year fixed and estimated variable
+rates.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_boc_series.html">get_boc_series</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BROKER_AVERAGE_5YR_VRM"</span>,<span class="st">"WM_SAN_FEUN20181109_C1_5Y-MR"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Date</span>,y<span class="op">=</span><span class="va">Value</span><span class="op">/</span><span class="fl">100</span>,colour<span class="op">=</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">percent</a></span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Mortgage rates"</span>,
        x<span class="op">=</span><span class="cn">NULL</span>,y<span class="op">=</span><span class="cn">NULL</span>, colour<span class="op">=</span><span class="cn">NULL</span>,
@@ -359,7 +472,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

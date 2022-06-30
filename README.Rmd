@@ -39,7 +39,7 @@ remotes::install_github("mountainmath/canbank")
 
 The package can import data for one or several Bank of Canada time series or series groups. For example, to access the series group "SAN_MIKA20210428_C1" with metrics pertaining to house price growth in Canada we can easily retrieve the data using the `get_boc_series_group` method.
 
-```{r example}
+```{r example, message=FALSE, warning=FALSE}
 library(canbank)
 library(dplyr)
 library(ggplot2)
