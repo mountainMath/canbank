@@ -14,7 +14,7 @@ list_boc_series <- function(refresh=FALSE){
   tmp <- file.path(cache_dir(),"series_list")
   if (refresh || !file.exists(tmp)) {
     message("Downloading BOC series list...")
-    utils::download.file(paste0(BOC_BASE_PATH,"/lists/series/csv"),tmp, quiet=TRUE)
+    utils::download.file(paste0(BOC_BASE_PATH,"/lists/series/csv"),tmp, quiet=TRUE,mode="wb")
   } else {
     message("Accessing BOC series list from cache...")
   }
@@ -39,7 +39,7 @@ list_boc_series_groups <- function(refresh=FALSE){
   tmp <- file.path(cache_dir(),"series_groups_list")
   if (refresh || !file.exists(tmp)) {
     message("Downloading BOC series list...")
-    utils::download.file(paste0(BOC_BASE_PATH,"/lists/groups/csv"),tmp, quiet=TRUE)
+    utils::download.file(paste0(BOC_BASE_PATH,"/lists/groups/csv"),tmp, quiet=TRUE,mode="wb")
   } else {
     message("Accessing BOC series list from cache...")
   }
@@ -68,7 +68,7 @@ get_boc_series_info <- function(series,refresh=FALSE){
       tmp <- file.path(cache_dir(),paste0("series_info_",s))
       if (refresh || !file.exists(tmp)) {
         message(paste0("Downloading BOC series data for ",s))
-        utils::download.file(paste0(BOC_BASE_PATH,paste0("/series/",s,"/csv")),tmp, quiet=TRUE)
+        utils::download.file(paste0(BOC_BASE_PATH,paste0("/series/",s,"/csv")),tmp, quiet=TRUE,mode="wb")
       } else {
         message("Accessing BOC series list from cache...")
       }
@@ -99,7 +99,7 @@ get_boc_series_group_info <- function(series_group,refresh=FALSE){
       tmp <- file.path(cache_dir(),paste0("series_group_info_",s))
       if (refresh || !file.exists(tmp)) {
         message(paste0("Downloading BOC series group data for ",s))
-        utils::download.file(paste0(BOC_BASE_PATH,paste0("/groups/",s,"/csv")),tmp, quiet=TRUE)
+        utils::download.file(paste0(BOC_BASE_PATH,paste0("/groups/",s,"/csv")),tmp, quiet=TRUE,mode="wb")
       } else {
         message("Accessing BOC series group list from cache...")
       }
@@ -182,7 +182,7 @@ get_boc_series <- function(series,
             paste0(collapse="&")
           url <- paste0(url,"?",query_string)
         }
-        utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE)
+        utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE,mode="wb")
       } else {
         if (!quiet) message("Accessing BOC series data from cache...")
       }
@@ -270,7 +270,7 @@ get_boc_series_group <- function(series_group,
             paste0(collapse="&")
           url <- paste0(url,"?",query_string)
         }
-        tryCatch(utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE),
+        tryCatch(utils::download.file(paste0(BOC_BASE_PATH,url),tmp, quiet=TRUE, mode="wb"),
                  error=function(cond){
                    error <<- cond
                  })
